@@ -1481,4 +1481,105 @@ if (speechRecognitionSupported) {
 
 if (!("speechSynthesis" in window)) voiceToggle.style.display = "none";
 </script>
+<script nonce="xai-48273">
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll("#current-year, #current-year-footer").forEach(e => e.textContent = new Date().getFullYear());
+        function addToFavorites(e) {
+            const t = e.querySelector(".favorite-text");
+            t.innerHTML = "⭐ Dodano!";
+            t.style.color = "#FFD700";
+            e.setAttribute("aria-pressed", "true");
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                alert("Podijeli > Dodaj na početni zaslon");
+            } else if (/Android/i.test(navigator.userAgent)) {
+                alert("Izbornik (⋮) > Dodaj na početni zaslon");
+            } else {
+                alert("Ctrl + D ili Cmd + D");
+            }
+            trackClick("Dodavanje Favorita", "Interakcija", 0);
+        }
+        function trackClick(e, t = "CTA", n = null) {
+            if (typeof gtag === "function") {
+                gtag("event", "click", { "event_category": t, "event_label": e, "value": n });
+            } else {
+                console.log("gtag nije dostupan:", e, t, n);
+            }
+        }
+        const t = document.querySelectorAll(".favorite-button");
+        t.forEach(e => e.addEventListener("click", () => addToFavorites(e)));
+        const n = document.querySelectorAll(".carousel blockquote");
+        let a = 0;
+        n[0].classList.add("active");
+        setInterval(() => {
+            n.forEach(e => e.classList.remove("active"));
+            n[a].classList.add("active");
+            a = (a + 1) % n.length;
+        }, 4000);
+    });
+</script>
+
+<script nonce="xai-48273">
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section");
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+    });
+</script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Učitavanje Google Tag Managera (GTM) nakon inicijalnog učitavanja
+    var gtmScript = document.createElement("script");
+    gtmScript.src = "https://www.googletagmanager.com/gtm.js?id=GTM-XXXXXX";
+    gtmScript.async = true;
+    document.head.appendChild(gtmScript);
+
+    // Inicijalizacija dataLayer prije GTM-a
+    window.dataLayer = window.dataLayer || [];
+    
+    function gtag() { dataLayer.push(arguments); }
+
+    // Učitavanje Google Analyticsa (GA4) samo ako korisnik interagira
+    function loadGA() {
+        if (!window.gaLoaded) {
+            var gaScript = document.createElement("script");
+            gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-2RSFE6WL4M";
+            gaScript.async = true;
+            document.head.appendChild(gaScript);
+            
+            gtag('js', new Date());
+            gtag('config', 'G-2RSFE6WL4M', { 'anonymize_ip': true, 'send_page_view': false });
+
+            window.gaLoaded = true;
+        }
+    }
+
+    // Učitavanje Google Ads samo ako korisnik skrolira stranicu
+    function loadGoogleAds() {
+        if (!window.adsLoaded) {
+            var adsScript = document.createElement("script");
+            adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            adsScript.async = true;
+            document.body.appendChild(adsScript);
+            window.adsLoaded = true;
+        }
+    }
+
+    // Korisnički događaji za učitavanje GA i Google Ads
+    document.addEventListener("mousemove", loadGA, { once: true });
+    document.addEventListener("scroll", loadGoogleAds, { once: true });
+});
+</script>
+  
+</body>
+</html>
 
