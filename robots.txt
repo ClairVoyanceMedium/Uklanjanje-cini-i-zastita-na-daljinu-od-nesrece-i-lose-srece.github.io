@@ -1,42 +1,100 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
+# Robots.txt optimiziran za 2025. - Nadmašuje izvrsnost
+# Dizajniran za hrvatski govorni prostor, umjetnu inteligenciju, Google AI, glasovne asistente i napredni SEO
+# Web stranica: https://clairvoyancemedium.github.io/Uklanjanje-cini-i-zastita-na-daljinu-od-nesrece-i-lose-srece.github.io/
+# Posljednje ažuriranje: 09/03/2025 14:00 GMT
+# Napomena: Testirajte pomoću Google Search Console i robotstxt.org za validaciju
+
+##########################
+# Opća autorizacija      #
+##########################
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
+Disallow: /privatno/         # Privatni direktoriji (npr. admin, skripte)
+Disallow: /temp/             # Privremene mape
+Disallow: /*?*               # Izbjegavanje dupliciranog sadržaja (URL parametri)
+Allow: /*.css$               # CSS za optimalno renderiranje (dostupno svima)
+Allow: /*.js$                # Esencijalni JS (dostupan svima)
+Allow: /*.pdf$               # Dopušteni strateški PDF-ovi (npr. vodiči)
+Allow: /                     # Zadana autorizacija
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+########################################
+# Googlebot (uključujući Google AI 2025) #
+########################################
 User-agent: Googlebot
-Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Disallow: /privatno/
+Disallow: /temp/
+Allow: /rituali/
+Allow: /zaštita/
+Allow: /uklanjanje-cini/
+
+###########################################
+# Glasovni asistenti                      #
+###########################################
+User-agent: Googlebot-Voice
+Disallow: /privatno/
+Disallow: /temp/
+Allow: /faq/
+Allow: /jednostavni-rituali/
+Allow: /savjeti/
+User-agent: Amazonbot        # Hipotetski za Alexa
+Disallow: /privatno/
+Disallow: /temp/
+Allow: /faq/
+Allow: /savjeti/
+User-agent: Applebot         # Hipotetski za Siri
+Disallow: /privatno/
+Disallow: /temp/
+Allow: /faq/
+Allow: /savjeti/
+
+###########################################
+# Bing (hrvatski prostor izvan Googlea)   #
+###########################################
 User-agent: Bingbot
-Allow: /
+Disallow: /privatno/
+Disallow: /temp/
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
+#################################
+# Blokiranje neželjenih robota  #
+#################################
+User-agent: AhrefsBot
 Disallow: /
-User-agent: EvilScraper
+User-agent: SemrushBot
+Disallow: /
+User-agent: MJ12bot
 Disallow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+##################################################
+# Partneri i Google analizatori                  #
+##################################################
+User-agent: Mediapartners-Google
+Disallow: /privatno/
+User-agent: AdsBot-Google
+Disallow: /privatno/
+
+##################################################
+# Novi AI crawleri (anticipacija za 2025.)       #
+##################################################
+User-agent: xAI-Crawler
+Disallow: /privatno/
+User-agent: OpenAI-Crawler
+Disallow: /privatno/
+User-agent: AnthropicBot
+Disallow: /privatno/
+User-agent: Qwantify         # Hrvatski prostor
+Disallow: /privatno/
+
+##################################################
+# Napredna optimizacija (mobile-first)           #
+##################################################
+User-agent: Googlebot-Mobile
+Disallow: /privatno/
+Disallow: /temp/
+Allow: /rituali/
+Allow: /zaštita/
+Allow: /uklanjanje-cini/
+
+##################
+# Sitemap i crawl #
+##################
+Sitemap: https://clairvoyancemedium.github.io/Uklanjanje-cini-i-zastita-na-daljinu-od-nesrece-i-lose-srece.github.io/sitemap.xml
+Crawl-delay: 0.5
